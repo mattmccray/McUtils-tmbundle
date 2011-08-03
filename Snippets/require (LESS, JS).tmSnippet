@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>//!require ${0}
+</string>
+	<key>name</key>
+	<string>require (LESS, JS)</string>
+	<key>scope</key>
+	<string>source.css.less, source.js</string>
+	<key>tabTrigger</key>
+	<string>require</string>
+	<key>uuid</key>
+	<string>FAB6E096-E0EE-4FF9-BC22-4DA75949204A</string>
+</dict>
+</plist>

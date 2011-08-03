@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>changed</key>
+	<dict>
+		<key>command</key>
+		<string>#!/usr/bin/env ruby
+
+# Sprocketize JS
+
+class String
+  def starts_with?(prefix)
+    prefix = prefix.to_s
+    self[0, prefix.length] == prefix
+  end
+end
+
+file = ENV["TM_FILEPATH"] || STDIN.read[/js: ([^*]+\.js)/, 1]
+file_dir = File.dirname(file)
+outfile = file.gsub(".js", ".min.js")
+matcher = /^\/\/!(.*):(.*)$/
+Dir.chdir( file_dir)
+
+options = {
+  'output' =&gt; outfile
+}
+
+IO.readlines(file).each do |line|
+  if line.starts_with? '//!'
+    if line =~ matcher
+      name = $1.strip
+      value = $2.strip
+      options[name] = value
+    end
+  end
+end
+
+load_paths = ['.']
+
+if options['lib_path']
+  load_paths &lt;&lt; options['lib_path'].split(',')
+  load_paths.flatten!
+end
+
+system("/bin/cat \"#{file}\" | /Users/mattmccray/Library/bin/jsmin &gt; \"#{options['output']}\"")
+
+# Growl...
+system("/usr/local/bin/growlnotify -m \"Minified #{File.basename(options['output'])}\" -i js -t \"JSMin\"")
+
+
+</string>
+	</dict>
+	<key>deleted</key>
+	<array/>
+	<key>isDelta</key>
+	<true/>
+	<key>uuid</key>
+	<string>5A1380E3-B394-45C5-A09A-1712030218B4</string>
+</dict>
+</plist>

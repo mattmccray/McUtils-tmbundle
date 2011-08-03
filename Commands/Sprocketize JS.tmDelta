@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>changed</key>
+	<dict>
+		<key>command</key>
+		<string>#!/usr/bin/env ruby
+
+# Sprocketize JS
+
+class String
+  def starts_with?(prefix)
+    prefix = prefix.to_s
+    self[0, prefix.length] == prefix
+  end
+end
+
+def options_for_file(file)
+  file = File.expand_path(file)
+  file_dir = File.dirname(file)
+  Dir.chdir( file_dir )
+
+  outfile = file.gsub(".js", ".all.js")
+  matcher = /^\/\/!(.*):(.*)$/
+
+  options = {
+    'input' =&gt; file,
+    'output' =&gt; outfile,
+    'file_dir' =&gt; file_dir
+  }
+
+  IO.readlines(file).each do |line|
+    if line.starts_with? '//!'
+      if line =~ matcher
+        name = $1.strip
+        value = $2.strip
+        options[name] = value
+      end
+    end
+  end
+  options
+end
+
+file = ENV["TM_FILEPATH"] || STDIN.read[/js: ([^*]+\.js)/, 1]
+
+options = options_for_file(file)
+
+if options['main']
+  options = options_for_file( File.expand_path( options['main'] ))
+end
+
+load_paths = ['.']
+
+if options['lib_path']
+  load_paths &lt;&lt; options['lib_path'].split(',')
+  load_paths.flatten!
+end
+
+
+cmd = %Q|/usr/bin/sprocketize -C "#{ options['file_dir'] }" -I "#{ load_paths.join('" -I "')}" "#{ options['input'] }" &gt; "#{ options['output'] }"|
+system(cmd)
+
+if options['minify_to']
+  mincmd = %Q|/bin/cat "#{ options['output'] }" \| $HOME/Library/bin/jsmin &gt; "#{ options['minify_to'] }"|
+  system(mincmd)
+end
+
+if options['yuic_to']
+  ymincmd = %Q|/usr/bin/java -jar $HOME/Library/bin/yuicompressor-2.4.2.jar -o "#{ options['yuic_to'] }" #{ options['output']}|
+  system(ymincmd)
+end
+
+
+# Growl...
+system("/usr/local/bin/growlnotify -m \"Sprocketized #{File.basename(options['output'])}\" -i js -t \"Sprocketizr\"")
+</string>
+	</dict>
+	<key>deleted</key>
+	<array/>
+	<key>isDelta</key>
+	<true/>
+	<key>uuid</key>
+	<string>16977F0D-4895-44AB-9382-42EC0316C134</string>
+</dict>
+</plist>

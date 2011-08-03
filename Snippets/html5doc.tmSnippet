@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+  	&lt;meta charset="utf-8" /&gt;
+  	&lt;title&gt;${0:$TM_FILENAME}&lt;/title&gt;
+  	&lt;!--[if lt IE 9]&gt;
+		  &lt;script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"&gt;&lt;/script&gt;
+  	&lt;![endif]--&gt;
+  	&lt;!-- Created by ${TM_FULLNAME} on ${TM_DATE} --&gt;
+  	&lt;style&gt;
+    	/* http://meyerweb.com/eric/tools/css/reset/ 
+         v2.0 | 20110126 License: none (public domain)
+      */
+      html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var,b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; }
+      /* HTML5 display-role reset for older browsers */
+      article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+      body { line-height: 1; }
+      ol, ul { list-style: none; }
+      blockquote, q { quotes: none; }
+      blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
+      table { border-collapse: collapse; border-spacing: 0; }
+  	&lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+     &lt;header&gt;
+      &lt;h1&gt; Title &lt;/h1&gt;
+     &lt;/header&gt;
+      &lt;nav&gt;&lt;/nav&gt;
+      &lt;article&gt;
+        &lt;section&gt;
+          &lt;p&gt; Contents &lt;/p&gt;
+        &lt;/section&gt;
+      &lt;/article&gt;
+      &lt;aside&gt;&lt;/aside&gt;
+      &lt;footer&gt;&lt;/footer&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</string>
+	<key>name</key>
+	<string>html5doc</string>
+	<key>tabTrigger</key>
+	<string>html5</string>
+	<key>uuid</key>
+	<string>9C326AFF-56BF-4989-B31A-6448ECB3AB53</string>
+</dict>
+</plist>

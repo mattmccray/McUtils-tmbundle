@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>//! output: ${1}
+//! minify_to: ${2}
+//! yuic_to: ${3}
+</string>
+	<key>name</key>
+	<string>sprocketize commands</string>
+	<key>tabTrigger</key>
+	<string>sprocketize</string>
+	<key>uuid</key>
+	<string>DB98DA90-C92F-4589-8EA2-55DE36C68644</string>
+</dict>
+</plist>
